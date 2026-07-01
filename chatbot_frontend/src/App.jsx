@@ -405,7 +405,7 @@ export default function Home() {
                         <Mascot mood={mood} />
                     </div>
                     <div>
-                        <h1 className="pb-title">NeuroDocs !</h1>
+                        <h1 className="pb-title">Notebooks Docs !</h1>
                         <p className="pb-sub">Drop in a document and start asking it questions. I'll do the reading.</p>
                     </div>
                 </div>
