@@ -1,6 +1,8 @@
 from langchain_ollama import ChatOllama
 
-
+# Runs models on your own PC, no API key.
+# ollama pull llama3.1
+# pip install langchain-ollama
 def ask_question(db, question):
 
     llm = ChatOllama(
