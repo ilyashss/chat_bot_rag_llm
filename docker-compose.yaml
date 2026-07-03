@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  # ollama:
+  #   image: ollama/ollama
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+
+  rag-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rag-backend
+    ports:
+      - "9000:9000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend/uploads:/app/uploads
+    restart: unless-stopped
+
+
+  rag-frontend:
+    build:
+      context: ./chatbot_frontend
+      dockerfile: Dockerfile
+    container_name: rag-frontend
+    ports:
+      - "5172:5173"
+    depends_on:
+      - rag-backend
+    restart: unless-stopped

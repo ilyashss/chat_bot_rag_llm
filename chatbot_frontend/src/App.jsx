@@ -11,6 +11,7 @@ export default function Home() {
     const [asking, setAsking] = useState(false)
     const [dragOver, setDragOver] = useState(false)
     const inputRef = useRef(null)
+    const [url, setUrl] = useState("http://localhost:9000")
 
     const mood = asking ? "thinking" : uploadState
 
@@ -28,7 +29,7 @@ export default function Home() {
         data.append("file", file)
 
         try {
-            const res = await fetch("http://localhost:8000/upload", {
+            const res = await fetch(`${url}/upload`, {
                 method: "POST",
                 body: data
             })
@@ -51,7 +52,7 @@ export default function Home() {
         setHistory((h) => [...h, { id: entryId, q, a: null, time, error: false }])
 
         try {
-            const res = await fetch("http://localhost:8000/chat", {
+            const res = await fetch(`${url}/chat`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ question: q })

@@ -29,6 +29,10 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome chatbot rag llm project"}
+
 @app.post("/upload")
 async def upload(file: UploadFile):
 

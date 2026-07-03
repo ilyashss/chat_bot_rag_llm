@@ -7,6 +7,7 @@ def ask_question(db, question):
 
     llm = ChatOllama(
         model="llama3.1",
+        base_url="http://host.docker.internal:11434",
         temperature=0
     )
 
